@@ -18,6 +18,8 @@ class App extends Component {
     
   }
 
+  
+
   formSubmitHandler = ({name, number}) => {
     
     const findName = this.state.contacts.find(contact => contact.name.includes(name))
@@ -49,10 +51,28 @@ class App extends Component {
       
   }
 
+  componentDidMount() {
+    const contacts = localStorage.getItem('contacts')
+    console.log(contacts)
+    const parseContacts = JSON.parse(contacts)
+    console.log(parseContacts)
+
+    if(parseContacts) {
+      this.setState({contacts: parseContacts})
+    }
+    }
+
+  componentDidUpdate(prevState) {
+    
+    if(this.state.contacts !== prevState.contacts) {
+       localStorage.setItem('contacts', JSON.stringify(this.state.contacts))
+    }
+  }
+
 
   render () {
    const normalize = this.state.filter.toLowerCase()
-  const filterName = this.state.contacts.filter(contact => contact.name.toLowerCase().includes(normalize))
+   const filterName = this.state.contacts.filter(contact => contact.name.toLowerCase().includes(normalize))
   
     return (
       <>

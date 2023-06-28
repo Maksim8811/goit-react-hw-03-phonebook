@@ -15,8 +15,7 @@ class App extends Component {
     {id: `${nanoid()}`, name: 'Annie Copeland', number: '227-91-26'},
     ],
     filter: '',
-    
-  }
+    }
 
   
 
@@ -31,11 +30,11 @@ class App extends Component {
         id: `${nanoid()}`,
         number,
   }
+
   this.setState(prevState => ({
     contacts: [contact, ...prevState.contacts]
   }))
-    }
-    }
+  }}
 
   onFilter = evt => {
     const filterInput = evt.target.value
@@ -48,19 +47,15 @@ class App extends Component {
     this.setState({
     contacts: res,
       })
-      
   }
 
   componentDidMount() {
     const contacts = localStorage.getItem('contacts')
-    console.log(contacts)
     const parseContacts = JSON.parse(contacts)
-    console.log(parseContacts)
 
     if(parseContacts) {
       this.setState({contacts: parseContacts})
-    }
-    }
+    }}
 
   componentDidUpdate(prevState) {
     

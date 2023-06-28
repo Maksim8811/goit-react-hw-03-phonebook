@@ -13,13 +13,10 @@ class Phonebook extends Component {
         number: ''
       }
 
-
       handleChange = evt => {
         const {name, value} = evt.target
         this.setState({[name]: value})
-        
-        
-    }
+      }
 
     handleSubmit = ev => {
         ev.preventDefault()
